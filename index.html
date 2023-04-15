@@ -31,9 +31,8 @@
           <label for="department" class="form-label">Phòng ban:</label>
           <select name="department" id="department" class="form-input" required>
             <option value="">Chọn phòng ban</option>
-            <option value="sales">Kinh doanh</option>
-            <option value="IT">Kĩ sư phần mềm</option>
-            <option value="sales">Kinh doanh</option>
+            <option value="Kinh doanh">Kinh doanh</option>
+            <option value="Kĩ sư phần mềm">Kĩ sư phần mềm</option>
           </select>
         </div>
         <div class="form-group">
@@ -48,9 +47,10 @@
             required
           />
         </div>
-        <button class="form-btn" id="save-info">Nhập</button>
-        <button class="form-btn" id="calculate-salary">Tính lương</button>
-        <button class="form-btn" id="update-info">Cập nhật</button>
+        <button class="form-btn" id="save-info">Lưu thông tin</button>
+        <button class="form-btn hidden" id="update-info">
+          Cập nhật thông tin
+        </button>
       </form>
       <table class="table">
         <tr>
