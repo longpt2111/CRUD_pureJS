@@ -18,7 +18,7 @@
   <body>
     <div class="container">
       <h1 class="heading">Bảng tính lương</h1>
-      <form action="" class="form">
+      <form action="" class="form" novalidate>
         <div class="form-group">
           <label for="basic-salary" class="form-label">Lương cơ bản:</label>
           <input type="text" id="basic-salary" class="form-input" disabled />
@@ -26,6 +26,7 @@
         <div class="form-group">
           <label for="fullname" class="form-label">Họ và tên:</label>
           <input type="text" id="fullname" class="form-input" required />
+          <p class="fullname-error error-msg"></p>
         </div>
         <div class="form-group">
           <label for="department" class="form-label">Phòng ban:</label>
@@ -34,6 +35,7 @@
             <option value="Kinh doanh">Kinh doanh</option>
             <option value="Kĩ sư phần mềm">Kĩ sư phần mềm</option>
           </select>
+          <p class="department-error error-msg"></p>
         </div>
         <div class="form-group">
           <label for="coefficients-salary" class="form-label"
@@ -46,6 +48,7 @@
             step="any"
             required
           />
+          <p class="coefficients-error error-msg"></p>
         </div>
         <button class="form-btn" id="save-info">Lưu thông tin</button>
         <button class="form-btn hidden" id="update-info">

@@ -6,6 +6,9 @@ const basicSalary = $("#basic-salary");
 const fullname = $("#fullname");
 const department = $("#department");
 const coeffitSalary = $("#coefficients-salary");
+const nameError = $(".fullname-error");
+const departmentError = $(".department-error");
+const coefficientsError = $(".coefficients-error");
 const saveInfoBtn = $("#save-info");
 const updateInfoBtn = $("#update-info");
 const table = $(".table");
@@ -50,14 +53,48 @@ function renderInfo() {
   clearForm();
 }
 
+function validateForm() {
+  let isValid = true;
+  if (fullname.value === "") {
+    nameError.innerText = "Bạn chưa nhập tên đầy đủ";
+    isValid = false;
+  } else {
+    nameError.innerText = "";
+  }
+
+  if (department.value === "") {
+    departmentError.innerText = "Bạn chưa chọn phòng ban";
+    isValid = false;
+  } else {
+    departmentError.innerText = "";
+  }
+
+  if (coeffitSalary.value === "") {
+    coefficientsError.innerText = "Bạn chưa nhập hệ số lương";
+    isValid = false;
+  } else {
+    coefficientsError.innerText = "";
+  }
+
+  return isValid;
+}
+
+function clearForm() {
+  fullname.value = "";
+  department.value = "";
+  coeffitSalary.value = "";
+}
+
 function saveInfo() {
-  let staffInfo = {
-    fullname: fullname.value,
-    department: department.value,
-    coeffitSalary: coeffitSalary.value,
-  };
-  staffList.push(staffInfo);
-  renderInfo();
+  if (validateForm()) {
+    let staffInfo = {
+      fullname: fullname.value,
+      department: department.value,
+      coeffitSalary: coeffitSalary.value,
+    };
+    staffList.push(staffInfo);
+    renderInfo();
+  }
 }
 
 function editInfo(e) {
@@ -71,16 +108,19 @@ function editInfo(e) {
 
   updateInfoBtn.classList.remove("hidden");
   saveInfoBtn.classList.add("hidden");
+  validateForm();
 }
 
 function updateInfo() {
-  staffList[selectedIndex].fullname = fullname.value;
-  staffList[selectedIndex].department = department.value;
-  staffList[selectedIndex].coeffitSalary = coeffitSalary.value;
-  renderInfo();
+  if (validateForm()) {
+    staffList[selectedIndex].fullname = fullname.value;
+    staffList[selectedIndex].department = department.value;
+    staffList[selectedIndex].coeffitSalary = coeffitSalary.value;
+    renderInfo();
 
-  updateInfoBtn.classList.add("hidden");
-  saveInfoBtn.classList.remove("hidden");
+    updateInfoBtn.classList.add("hidden");
+    saveInfoBtn.classList.remove("hidden");
+  }
 }
 
 function deleteInfo(e) {
@@ -90,12 +130,6 @@ function deleteInfo(e) {
     staffList.splice(selectedIndex, 1);
   }
   renderInfo();
-}
-
-function clearForm() {
-  fullname.value = "";
-  department.value = "";
-  coeffitSalary.value = "";
 }
 
 basicSalary.value = basicSalaryValue.toLocaleString("en-US", {
