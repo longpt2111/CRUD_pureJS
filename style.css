@@ -1,0 +1,128 @@
+html {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+
+input {
+  line-height: normal;
+}
+
+label,
+button {
+  cursor: pointer;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  border: 1px solid grey;
+  padding: 20px;
+  box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+  max-width: 1000px;
+  width: 100%;
+  height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 10px;
+}
+
+.form,
+table {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 70%;
+  padding: 4px;
+}
+
+.form-btn {
+  padding: 4px 8px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.form-btn + .form-btn {
+  margin-left: 20px;
+}
+
+.form-group:first-child {
+  max-width: 190px;
+  width: 100%;
+  margin-left: auto;
+}
+
+.form-group #basic-salary {
+  max-width: 80px;
+  font-weight: 700;
+}
+
+table {
+  margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 4px;
+}
