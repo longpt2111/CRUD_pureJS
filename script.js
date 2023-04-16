@@ -55,28 +55,40 @@ function renderInfo() {
 
 function validateForm() {
   let isValid = true;
+  if (!validateName()) isValid = false;
+  if (!validateDepartment()) isValid = false;
+  if (!validateCoeffitSalary()) isValid = false;
+  return isValid;
+}
+
+function validateName() {
   if (fullname.value === "") {
     nameError.innerText = "Bạn chưa nhập tên đầy đủ";
-    isValid = false;
+    return false;
   } else {
     nameError.innerText = "";
   }
+  return true;
+}
 
+function validateDepartment() {
   if (department.value === "") {
     departmentError.innerText = "Bạn chưa chọn phòng ban";
-    isValid = false;
+    return false;
   } else {
     departmentError.innerText = "";
   }
+  return true;
+}
 
+function validateCoeffitSalary() {
   if (coeffitSalary.value === "") {
     coefficientsError.innerText = "Bạn chưa nhập hệ số lương";
-    isValid = false;
+    return false;
   } else {
     coefficientsError.innerText = "";
   }
-
-  return isValid;
+  return true;
 }
 
 function clearForm() {
@@ -139,5 +151,8 @@ basicSalary.value = basicSalaryValue.toLocaleString("en-US", {
 form.addEventListener("submit", (e) => e.preventDefault());
 saveInfoBtn.addEventListener("click", saveInfo);
 updateInfoBtn.addEventListener("click", updateInfo);
+fullname.addEventListener("input", validateName);
+department.addEventListener("input", validateDepartment);
+coeffitSalary.addEventListener("input", validateCoeffitSalary);
 
 renderInfo();
