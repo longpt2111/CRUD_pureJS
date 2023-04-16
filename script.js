@@ -42,9 +42,9 @@ function renderInfo() {
     cell2.innerHTML = staffList[i].fullname;
     cell3.innerHTML = staffList[i].department;
     cell4.innerHTML = staffList[i].coeffitSalary;
-    cell5.innerHTML = (
+    cell5.innerHTML = formatSalary(
       staffList[i].coeffitSalary * basicSalaryValue
-    ).toLocaleString("en-US", { useGrouping: true });
+    );
     cell6.innerHTML = `
     <a href="javascript:void(0)" class="edit-btn" onclick="editInfo(this)">Sửa</a> / 
     <a href="javascript:void(0)" class="delete-btn" onclick="deleteInfo(this)">Xóa</a>
@@ -144,9 +144,13 @@ function deleteInfo(e) {
   renderInfo();
 }
 
-basicSalary.value = basicSalaryValue.toLocaleString("en-US", {
-  useGrouping: true,
-});
+function showBasicSalary() {
+  basicSalary.value = formatSalary(basicSalaryValue);
+}
+
+function formatSalary(value) {
+  return value.toLocaleString("en-US", { useGrouping: true });
+}
 
 form.addEventListener("submit", (e) => e.preventDefault());
 saveInfoBtn.addEventListener("click", saveInfo);
@@ -155,4 +159,5 @@ fullname.addEventListener("input", validateName);
 department.addEventListener("input", validateDepartment);
 coeffitSalary.addEventListener("input", validateCoeffitSalary);
 
+showBasicSalary();
 renderInfo();
